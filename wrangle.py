@@ -22,6 +22,8 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 from sklearn.metrics import ConfusionMatrixDisplay
 import datetime
 
+import warnings
+warnings.filterwarnings("ignore")
 
 
 #---------- ACQUIRE & PREPARE-------
@@ -89,7 +91,7 @@ def prep_copd():
     return df_sample
 
 def demographic_graph(df_sample):
-    # Get the value counts of 'Cancer' topic in the 'Demographics' column
+    # Get the value counts of 'COPD' topic in the 'Demographics' column
     demo_copd = df_sample[df_sample['Yes_COPD'] == 1]['Demographics'].value_counts()
     
     # Create a bar plot using Seaborn
@@ -127,7 +129,17 @@ def split_sample(df_sample):
     print(f'Test shape: {sample_test.shape}')
     return sample_train, sample_validate, sample_test 
 
-#------------GENDER VS COPD--------
+def X_y_split(sample_train, sample_validate, sample_test):
+    #Splitting the data in to X and Y to take out the data with curn and those without 
+    sample_X_train = sample_train.select_dtypes(exclude=['object']).drop(columns=['Yes_COPD'])
+    sample_y_train = sample_train.select_dtypes(exclude=['object']).Yes_COPD
+    
+    sample_X_validate = sample_validate.select_dtypes(exclude=['object']).drop(columns=['Yes_COPD'])
+    sample_y_validate = sample_validate.select_dtypes(exclude=['object']).Yes_COPD
+    
+    sample_X_test = sample_test.select_dtypes(exclude=['object']).drop(columns=['Yes_COPD'])
+    sample_y_test = sample_test.select_dtypes(exclude=['object']).Yes_COPD
+    #------------GENDER VS COPD--------
 
 def gender_graph(sample_train):
     ''' This functions graphs gender vs COPD''' 
@@ -334,6 +346,7 @@ def race_stats(sample_train):
     else:
         print("we fail to reject the null")
         
+#------- YEAR VS COPD-----        
 def year_graph(sample_train):
     no_COPD_df = df_sample[df_sample['Yes_COPD'] == 0]
 
@@ -373,7 +386,8 @@ def year_stat(sample_train)
         print('Outcome: We reject the null')
     else:
         print("Outcome: We fail to reject the null")
-        
+
+#------- US GEO LOCATION  VS COPD-----
 def map_graph(sample_train):
     map_sample = sample_train.sample(10000)
     map_sample.drop(map_sample[map_sample['Geo Location'] == ''].index, inplace=True)
@@ -383,19 +397,19 @@ def map_graph(sample_train):
     map_usa = folium.Map(location=[37.0902, -95.7129], zoom_start=4)
     
     # Get the count of 'Yes' for each state
-    yes_count_per_state = map_sample[map_sample['Yes_cancer'] == 1].groupby('State Abbr').size()
+    yes_count_per_state = map_sample[map_sample['Yes_COPD'] == 1].groupby('State Abbr').size()
     
-    # Add markers to the map for each state with cancer values
+    # Add markers to the map for each state with COPD values
     for idx, row in map_sample.iterrows():
         # Convert 1 to 'Yes' and 0 to 'No'
-        cancer_status = 'Yes' if row['Yes_cancer'] == 1 else 'No'
+        COPD_status = 'Yes' if row['Yes_COPD'] == 1 else 'No'
         
         # Get the count of 'Yes' for the current state
         count_for_state = yes_count_per_state.get(row['State Abbr'], 0)
         
         folium.Marker(
             location=[row['Latitude'], row['Longitude']],
-            popup=f"{row['State Abbr']} State # of {cancer_status} Cancer Observations:  {count_for_state}",
+            popup=f"{row['State Abbr']} State # of {COPD_status} COPD Observations:  {count_for_state}",
             tooltip=row['State Abbr'],
             icon=folium.Icon(icon='info-sign')
         ).add_to(map_usa)
@@ -403,34 +417,8 @@ def map_graph(sample_train):
     map_usa.save("map_usa.html")
     # Display the map
     map_usa
+        
     
-def year_stat(sample_train, sample_validate):   
-    '''Pearson R stat for year'''
-    alpha = 0.05
-    train_r, train_p = pearsonr(sample_train.Year, sample_train.Yes_cancer)
-    validate_r, validate_p = pearsonr(sample_validate.Year, sample_validate.Yes_cancer)
-    #    test_r, test_p = pearsonr(test.chlorides, test.quality)
-    print('train_r:', train_r)
-    print('train_p:',train_p)
-    print('validate_r:', validate_r)
-    print('validate_p:', validate_p)
-    print(f'The p-value is less than the alpha: {validate_p < alpha}')
-    if validate_p < alpha:
-        print('Outcome: We reject the null')
-    else:
-        print("Outcome: We fail to reject the null")
-    
-def X_y_split(sample_train, sample_validate, sample_test):
-    #Splitting the data in to X and Y to take out the data with curn and those without 
-    sample_X_train = sample_train.select_dtypes(exclude=['object']).drop(columns=['Yes_cancer'])
-    sample_y_train = sample_train.select_dtypes(exclude=['object']).Yes_cancer
-    
-    sample_X_validate = sample_validate.select_dtypes(exclude=['object']).drop(columns=['Yes_cancer'])
-    sample_y_validate = sample_validate.select_dtypes(exclude=['object']).Yes_cancer
-    
-    sample_X_test = sample_test.select_dtypes(exclude=['object']).drop(columns=['Yes_cancer'])
-    sample_y_test = sample_test.select_dtypes(exclude=['object']).Yes_cancer
-    return sample_X_train, sample_y_train, sample_X_validate, sample_y_validate, sample_X_test, sample_y_test
 
 
 #---------TRAIN MODELS-------------------
@@ -444,13 +432,13 @@ def train_models(sample_X_train, sample_y_train, sample_X_validate, sample_y_val
     plt.figure(figsize=(13, 7))
     plot_tree(sample_tree, feature_names=sample_X_train.columns, rounded=True)
     #Dataframe of predictions
-    cancer_y_prediction = pd.DataFrame({'Cancer': sample_y_train,'Baseline': 0, 'Model_1':sample_tree.predict(sample_X_train)})
+    COPD_y_prediction = pd.DataFrame({'COPD': sample_y_train,'Baseline': 0, 'Model_1':sample_tree.predict(sample_X_train)})
     y_prediction_prob = sample_tree.predict_proba(sample_X_train)
     print(y_prediction_prob[0:5])
-    print('Accuracy of Decision Tree classifier on training set: {:.2f}'
+    print('Accuracy of Decision Tree classifier on training set: {:.4f}'
       .format(sample_tree.score(sample_X_train, sample_y_train)))
-    confusion_matrix(cancer_y_prediction.Cancer, cancer_y_prediction.Model_1)
-    print(classification_report(cancer_y_prediction.Cancer,cancer_y_prediction.Model_1))
+    confusion_matrix(COPD_y_prediction.COPD, COPD_y_prediction.Model_1)
+    print(classification_report(COPD_y_prediction.COPD,COPD_y_prediction.Model_1))
 
 # def log_train(sample_X_train,sample_y_train):
     ##### Logistic Regression Train
@@ -460,11 +448,11 @@ def train_models(sample_X_train, sample_y_train, sample_X_validate, sample_y_val
     log_sample.fit(sample_X_train, sample_y_train)
     # Use
     y_prediction = log_sample.predict(sample_X_train)
-    cancer_y_prediction['Model_2'] = y_prediction
-    print('Accuracy of Logistic Regression training set: {:.2f}'
+    COPD_y_prediction['Model_2'] = y_prediction
+    print('Accuracy of Logistic Regression training set: {:.4f}'
       .format(log_sample.score(sample_X_train, sample_y_train)))
-    confusion_matrix(cancer_y_prediction.Cancer, cancer_y_prediction.Model_2)
-    print(classification_report(cancer_y_prediction.Cancer,cancer_y_prediction.Model_2))
+    confusion_matrix(COPD_y_prediction.COPD, COPD_y_prediction.Model_2)
+    print(classification_report(COPD_y_prediction.COPD,COPD_y_prediction.Model_2))
     
 # def random_train(sample_X_train,sample_y_train):
     ### Random Forest Train
@@ -481,53 +469,53 @@ def train_models(sample_X_train, sample_y_train, sample_X_validate, sample_y_val
     #Use
     rf_sample.score(sample_X_train,sample_y_train)
     rf_y_prediction = rf_sample.predict(sample_X_train)
-    cancer_y_prediction['Model_3'] = rf_y_prediction
-    print('Accuracy of Random Forest training set: {:.2f}'
+    COPD_y_prediction['Model_3'] = rf_y_prediction
+    print('Accuracy of Random Forest training set: {:.4f}'
       .format(rf_sample.score(sample_X_train, sample_y_train)))
-    confusion_matrix(cancer_y_prediction.Cancer, cancer_y_prediction.Model_3)
-    print(classification_report(cancer_y_prediction.Cancer,cancer_y_prediction.Model_3))
-    cancer_y_prediction.head()
+    confusion_matrix(COPD_y_prediction.COPD, COPD_y_prediction.Model_3)
+    print(classification_report(COPD_y_prediction.COPD,COPD_y_prediction.Model_3))
+    COPD_y_prediction.head()
     
     
 #------------VALIDATE MODELS------------
 # def validate_models(sample_X_validate, sample_y_validate):
     #### Decision Tree Validate
     #Dataframe of validate predictions
-    cancer_y_val_prediction = pd.DataFrame({'Cancer': sample_y_validate,'Baseline': 0, 'Model_1':sample_tree.predict(sample_X_validate)})
-    cancer_y_val_prediction_prob = sample_tree.predict_proba(sample_X_validate)
-    print(cancer_y_val_prediction_prob[0:5])
-    print('Accuracy of Decision Tree validation set: {:.2f}'
+    COPD_y_val_prediction = pd.DataFrame({'COPD': sample_y_validate,'Baseline': 0, 'Model_1':sample_tree.predict(sample_X_validate)})
+    COPD_y_val_prediction_prob = sample_tree.predict_proba(sample_X_validate)
+    print(COPD_y_val_prediction_prob[0:5])
+    print('Accuracy of Decision Tree validation set: {:.4f}'
           .format(sample_tree.score(sample_X_validate, sample_y_validate)))
-    confusion_matrix(cancer_y_val_prediction.Cancer, cancer_y_val_prediction.Model_1)
-    print(classification_report(cancer_y_val_prediction.Cancer,cancer_y_val_prediction.Model_1))
+    confusion_matrix(COPD_y_val_prediction.COPD, COPD_y_val_prediction.Model_1)
+    print(classification_report(COPD_y_val_prediction.COPD,COPD_y_val_prediction.Model_1))
     
     ##### Logistic Regression Validate
     # USE
-    cancer_val_y_prediction = log_sample.predict(sample_X_validate)
-    cancer_y_val_prediction['Model_2'] = cancer_val_y_prediction
-    print('Accuracy of Logistic Regression validation set: {:.2f}'
+    COPD_val_y_prediction = log_sample.predict(sample_X_validate)
+    COPD_y_val_prediction['Model_2'] = COPD_val_y_prediction
+    print('Accuracy of Logistic Regression validation set: {:.4f}'
           .format(log_sample.score(sample_X_validate, sample_y_validate)))
-    confusion_matrix(cancer_y_val_prediction.Cancer, cancer_y_val_prediction.Model_2)
-    print(classification_report(cancer_y_val_prediction.Cancer, cancer_y_val_prediction.Model_2))
+    confusion_matrix(COPD_y_val_prediction.COPD, COPD_y_val_prediction.Model_2)
+    print(classification_report(COPD_y_val_prediction.COPD, COPD_y_val_prediction.Model_2))
     
     #### Random Forest Validate
     #score on my train data
     rf_sample.score(sample_X_validate,sample_y_validate)
     # use the model to make predictions
-    cancer_val_rf_y_prediction = rf_sample.predict(sample_X_validate)
-    cancer_y_val_prediction['Model_3'] =cancer_val_rf_y_prediction
-    print('Accuracy of Random Forest validation set: {:.2f}'
+    COPD_val_rf_y_prediction = rf_sample.predict(sample_X_validate)
+    COPD_y_val_prediction['Model_3'] =COPD_val_rf_y_prediction
+    print('Accuracy of Random Forest validation set: {:.4f}'
           .format(rf_sample.score(sample_X_validate, sample_y_validate)))
-    confusion_matrix(cancer_y_val_prediction.Cancer, cancer_y_val_prediction.Model_3)
-    print(classification_report(cancer_y_val_prediction.Cancer, cancer_y_val_prediction.Model_3))
+    confusion_matrix(COPD_y_val_prediction.COPD, COPD_y_val_prediction.Model_3)
+    print(classification_report(COPD_y_val_prediction.COPD, COPD_y_val_prediction.Model_3))
  #---------- TEST MODEL-----------------
 # def test_model(ample_X_test, sample_y_test):
     #Dataframe of validate predictions
-    cancer_test_prediction = pd.DataFrame({'Cancer': sample_y_test,'Baseline': 0, 'Model_1':sample_tree.predict(sample_X_test)})
-    cancer_test_prediction_prob = sample_tree.predict_proba(sample_X_test)
-    print(cancer_test_prediction_prob[0:5])
-    print('Accuracy of Decision Tree classifier on Test set: {:.2f}'
+    COPD_test_prediction = pd.DataFrame({'COPD': sample_y_test,'Baseline': 0, 'Model_1':sample_tree.predict(sample_X_test)})
+    COPD_test_prediction_prob = sample_tree.predict_proba(sample_X_test)
+    print(COPD_test_prediction_prob[0:5])
+    print('Accuracy of Decision Tree classifier on Test set: {:.4f}'
       .format(sample_tree.score(sample_X_test, sample_y_test)))
-    confusion_matrix(cancer_test_prediction.Cancer, cancer_test_prediction.Model_1)
-    print(classification_report(cancer_test_prediction.Cancer,cancer_test_prediction.Model_1))
+    confusion_matrix(COPD_test_prediction.COPD, COPD_test_prediction.Model_1)
+    print(classification_report(COPD_test_prediction.COPD,COPD_test_prediction.Model_1))
     
