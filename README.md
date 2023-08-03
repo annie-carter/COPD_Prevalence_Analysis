@@ -151,11 +151,11 @@ By following these instructions, you will be able to reproduce the analysis and 
 - **Targeted Awareness Campaigns:** 
 -- Implement targeted interventions to address gender disparities in COPD diagnosis, encouraging early reporting of symptoms and enhancing healthcare access for both men and women.
 --Develop and implement tailored healthcare initiatives to address racial disparities in COPD diagnosis, focusing on improving access and healthcare outcomes for racial minority groups.
--- Enhance awareness and education among healthcare providers to differentiate COVID-19 symptoms from COPD exacerbation to enable prompt and accurate diagnosis for COPD patients during pandemics.Focus on raising awareness about specific cancer types that are most prevalent in certain gender and race/ethnicity groups. Tailored awareness campaigns can improve early detection and prompt appropriate interventions.
+-- Enhance awareness and education among healthcare providers to differentiate COVID-19 symptoms from COPD exacerbation to enable prompt and accurate diagnosis for COPD patients during pandemics.Focus on raising awareness about specific COPD types that are most prevalent in certain gender and race/ethnicity groups. Tailored awareness campaigns can improve early detection and prompt appropriate interventions.
 
 - **Further Research:** Conduct further research to understand the reasons there has been no improvemetnt with COPD. Possible decrease in cigarettes, but increase in vaping. Identify factors contributing to stagnation in COPD prevalence.
 
-By implementing these recommendations and conducting additional research, we can gain deeper insights into cancer prevalence, improve early detection, and implement effective interventions, ultimately leading to better cancer outcomes and improved public health.
+By implementing these recommendations and conducting additional research, we can gain deeper insights into COPD prevalence, improve early detection, and implement effective interventions, ultimately leading to better COPD outcomes and improved public health.
     
 ## <u>References</u>
 
