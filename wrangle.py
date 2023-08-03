@@ -139,6 +139,7 @@ def X_y_split(sample_train, sample_validate, sample_test):
     
     sample_X_test = sample_test.select_dtypes(exclude=['object']).drop(columns=['Yes_COPD'])
     sample_y_test = sample_test.select_dtypes(exclude=['object']).Yes_COPD
+    return sample_X_train, sample_y_train, sample_X_validate, sample_y_validate, sample_X_test, sample_y_test
     #------------GENDER VS COPD--------
 
 def gender_graph(sample_train):
