@@ -147,9 +147,9 @@ def gender_graph(sample_train):
     gender_graph = pd.DataFrame(sample_train)
     
     # Create DataFrame for graph
-    gender_graph_df = df_sample[df_sample['Gender'].isin(['Male', 'Female'])].dropna(subset=['Gender'])
+    gender_graph_df = sample_train[sample_train['Gender'].isin(['Male', 'Female'])].dropna(subset=['Gender'])
     
-    # Assuming you have a DataFrame 'df_sample' with the required data
+    # Assuming you have a DataFrame 'sample_train' with the required data
     new_labels = {'no COPD': 'No COPD', 'COPD': 'COPD'}
     
     # Set a larger figure size
@@ -188,7 +188,7 @@ def gender_observed(sample_train):
     ''' This functions graphs Observed vs COPD''' 
     alpha = 0.05    
     gender_observed = pd.crosstab(sample_train.Yes_COPD, sample_train.Yes_female)
-    # Assuming you have a DataFrame 'df_sample' with the required data
+    # Assuming you have a DataFrame 'sample_train' with the required data
     new_labels = {'no COPD': 'No COPD', 'COPD': 'COPD'}
     # Plot the observed data as a bar plot
     go =gender_observed.plot(kind='bar', stacked=True, color=['pink','skyblue' ], edgecolor='black')
@@ -348,13 +348,13 @@ def race_stats(sample_train):
         
 #------- YEAR VS COPD-----        
 def year_graph(sample_train):
-    no_COPD_df = df_sample[df_sample['Yes_COPD'] == 0]
+    no_COPD_df = sample_train[sample_train['Yes_COPD'] == 0]
 
     # Group by 'Year' and count the number of 'No_COPD' occurrences for each year
     no_COPD_totals_by_year = no_COPD_df.groupby('Year').size()
     
     # Filter the DataFrame for rows where 'Yes_COPD' is equal to "1" (Yes COPD)
-    yes_COPD_df = df_sample[df_sample['Yes_COPD'] == 1]
+    yes_COPD_df = sample_train[sample_train['Yes_COPD'] == 1]
     
     # Group by 'Year' and count the number of 'Yes_COPD' occurrences for each year
     yes_COPD_totals_by_year = yes_COPD_df.groupby('Year').size()
@@ -371,7 +371,7 @@ def year_graph(sample_train):
     plt.xticks(rotation=45)
     plt.show()
     
-def year_stat(sample_train)
+def year_stat(sample_train, sample_validate):
     '''Pearson R stat for year'''
     alpha = 0.05
     train_r, train_p = pearsonr(sample_train.Year, sample_train.Yes_COPD)
