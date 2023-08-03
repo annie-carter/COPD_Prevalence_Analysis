@@ -4,15 +4,17 @@ by Annie Carter
 Sourced by U.S. Department of Health & Human Services
 ![image](https://img.freepik.com/premium-photo/lungs-airway-3d-style-darktable-processing_921860-35264.jpg?size=626&ext=jpg&ga=GA1.2.382400335.1688677589&semt=sph)
 
+Trello: https://trello.com/invite/b/8SJiWQzt/ATTIc70085783caf23713771e813130743131BC98E7B/individual-project
+
 ## <u>Background</u>
 COPD is a prevalent and chronic illness primarily caused by inhaling tobacco smoke, ranking as the third leading cause of death in the United States. COPD is a heterogeneous lung condition characterized by chronic respiratory symptoms such as dyspnea, cough, expectoration, and exacerbations, which result from abnormalities in the airways (bronchitis, bronchiolitis) and/or alveoli (emphysema), leading to persistent and often progressive airflow obstruction. According to estimates, approximately 13 million Americans have received a diagnosis of COPD, and an additional 13 million individuals are unaware of their COPD diagnosis, totaling to about 26 million Americans affected by this chronic respiratory disease (ALA, 2023).
 
 ## <u>Project Description</u>
-This machine learning classification project aims to conduct an extensive analysis and predictive assessment of Chronic Obstructive Pulmonary Disease (COPD) prevalence in the United States, utilizing the comprehensive "U.S. Chronic Disease Indicators (CDI)" dataset. The dataset encompasses a wealth of COPD-related information, including risk factors, prevalence rates, health outcomes, and crucial demographic data such as age, gender, race, and geographical location. A ML Classification project could shed light on the characteristics of this population and investigate health disparities among vulnerable groups. Understanding COPD's prevalence across different demographics is vital for addressing health disparities and improving healthcare planning and interventions.
+This machine learning classification project aims to conduct an extensive analysis and predictive assessment of Chronic Obstructive Pulmonary Disease (COPD) prevalence in the United States, utilizing the comprehensive "U.S. Chronic Disease Indicators (CDI)" dataset. The dataset encompasses a wealth of COPD-related information, including risk factors, prevalence rates, health outcomes, and crucial demographic data such as age, gender, race, and geographical location. A ML Classification project could shed light on the characteristics of this population and investigate health disparities among vulnerable groups. Understanding COPD's prevalence across different demographics is vital for addressing health disparities, ultimately playing a significant role in reducing the impact of COPD on public health in the United States.
 
 ## <u>Project Goal</u>
 
-The main objective of this project is to build a powerful predictive model using advanced ML classification techniques that leverage demographic and chronic disease indicators to address fluctuations in COPD rates, with specific attention to gender and race demographics. By conducting this analysis, we seek to identify complex patterns and crucial risk factors related to COPD prevalence. The valuable insights obtained from this investigation will inform targeted interventions, early detection approaches, and enhanced healthcare planning, ultimately playing a significant role in reducing the impact of COPD on public health in the United States.
+The main objective of this project is to build a powerful predictive model using advanced ML classification techniques that leverage demographic and chronic disease indicators to address fluctuations in COPD rates, with specific attention to gender and race demographics. By conducting this analysis, we seek to identify complex patterns and crucial risk factors related to COPD prevalence. The valuable insights obtained from this investigation will inform targeted interventions, early detection approaches, and enhanced healthcare planning.
 
 
 ## <u>Initial Questions</u>
@@ -117,9 +119,9 @@ By following these instructions, you will be able to reproduce the analysis and 
 
 ## <u>Key Findings</u>
 
-* <span style ='color:#1F456E'> Gender Disparity in COPD Diagnosis: The study identifies significant gender disparity in COPD diagnosis, with higher rates of undiagnosed COPD observed in men, regardless of race. Women tend to report COPD symptoms earlier and more frequently, leading to earlier diagnosis and potentially explaining the lower rates of undiagnosed COPD among women.(Barnes, 2016)
+* <span style ='color:#1F456E'> Gender Disparity in COPD Diagnosis: The study identifies significant gender disparity in COPD diagnosis. Studies show that there are higher rates of undiagnosed COPD observed in men, regardless of race. Women tend to report COPD symptoms earlier and more frequently, leading to earlier diagnosis and potentially explaining the higher rates of diagnosed COPD among women.(Barnes, 2016)
     
-* <span style ='color:#1F456E'> Gender Disparity in COPD Diagnosis: Data showed women had signficantly more occurance, likely due to women smokers have a roughly 50% higher likelihood of developing COPD compared to men. Females may experience more severe COPD with early-onset disease and show greater susceptibility to COPD with lower tobacco exposure.(Barnes, 2016 ; Mamary et al., 2018)
+* <span style ='color:#1F456E'> Gender Disparity in COPD Diagnosis: Data showed women had signficantly more occurance, possibly  due to women smokers have a roughly 50% higher likelihood of developing COPD compared to men. Females may experience more severe COPD with early-onset disease and show greater susceptibility to COPD with lower tobacco exposure.(Barnes, 2016 ; Mamary et al., 2018)
 
 * <span style ='color:#1F456E'> Racial Disparities in COPD Diagnosis: Data showed disporportionate COPD prevalence in race when compared to US race population ratios. Although, once considered a disease primarily affecting white men, is now increasingly prevalent among African American men and women. Notably, significant disparities by race exist in the risk for undiagnosed COPD. Tailored interventions and targeted healthcare initiatives should be implemented to improve COPD diagnosis rates for racial minority groups. (Awatade et. al, 2023; Mamary et. al, 2018)
 
@@ -143,16 +145,17 @@ By following these instructions, you will be able to reproduce the analysis and 
 4. **Feature Engineering for Specific COPD Types and Age:** Enhance predictions and insights by implementing targeted feature engineering for specific COPD types and age groups in the DHHS Chronic Disease Indicators analysis. Capture unique characteristics and risk factors associated with different COPD types and specific age ranges to improve accuracy in prevalence predictions.
     
 ## <u>Recommendations</u>
-<span style ='color:#1F456E'>- **Targeted Awareness Campaigns:** Focus on raising awareness about specific COPD types that are most prevalent in certain gender and race/ethnicity groups. Tailored awareness campaigns can improve early detection and prompt appropriate interventions.
 
-<span style ='color:#1F456E'>- **Geographical Interventions:** Based on the identified clusters of COPD prevalence in certain geographic areas, implement targeted interventions and healthcare initiatives to address regional disparities in COPD rates.
 
-<span style ='color:#1F456E'>- **Further Research:** Conduct further research to understand the reasons behind the decline in lung, breast, prostate, and colorectal COPD death rates. Identify factors contributing to the rise in colorectal COPD cases in younger adults to develop effective prevention strategies.
+- **Targeted Awareness Campaigns:** 
+-- Implement targeted interventions to address gender disparities in COPD diagnosis, encouraging early reporting of symptoms and enhancing healthcare access for both men and women.
+--Develop and implement tailored healthcare initiatives to address racial disparities in COPD diagnosis, focusing on improving access and healthcare outcomes for racial minority groups.
+-- Enhance awareness and education among healthcare providers to differentiate COVID-19 symptoms from COPD exacerbation to enable prompt and accurate diagnosis for COPD patients during pandemics.Focus on raising awareness about specific cancer types that are most prevalent in certain gender and race/ethnicity groups. Tailored awareness campaigns can improve early detection and prompt appropriate interventions.
 
-<span style ='color:#1F456E'>- **Long-Term Monitoring:** Continuously monitor COPD prevalence trends over time to identify any emerging patterns and respond promptly to potential changes in COPD rates.
+- **Further Research:** Conduct further research to understand the reasons there has been no improvemetnt with COPD. Possible decrease in cigarettes, but increase in vaping. Identify factors contributing to stagnation in COPD prevalence.
 
-<span style ='color:#1F456E'>By implementing these recommendations and conducting additional research, we can gain deeper insights into COPD prevalence, improve early detection, and implement effective interventions, ultimately leading to better COPD outcomes and improved public health.
-
+By implementing these recommendations and conducting additional research, we can gain deeper insights into cancer prevalence, improve early detection, and implement effective interventions, ultimately leading to better cancer outcomes and improved public health.
+    
 ## <u>References</u>
 
 - American Lung Association.[ALA] (2023). COPD Prevalence. Retrieved from https://www.lung.org/research/trends-in-lung-disease/copd-trends-brief/copd-prevalence
