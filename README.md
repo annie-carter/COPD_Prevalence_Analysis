@@ -1,14 +1,14 @@
-# DHHS Chronic Disease Indicators - COPD  Prevalence Analysis
+# DHHS Chronic Disease Indicators - Chronic Obstructive Pulmonary Disease (COPD) Prevalence Analysis
 # <bu>CLASSIFICATION PROJECT</bu>
 by Annie Carter
 Sourced by U.S. Department of Health & Human Services
-![image](https://github.com/annie-carter/DHHS_chronic_disease_indicators/assets/131205837/627005b8-5424-4961-85d0-f61b213445b1)
+![image](https://img.freepik.com/premium-photo/lungs-airway-3d-style-darktable-processing_921860-35264.jpg?size=626&ext=jpg&ga=GA1.2.382400335.1688677589&semt=sph)
 
-COPD as “a heterogeneous lung condition characterized by chronic respiratory symptoms (dyspnea, cough, expectoration, exacerbations) due to abnormalities of the airways (bronchitis, bronchiolitis) and/or alveoli (emphysema) that cause persistent, often progressive, airflow obstruction.”
+## <u>Background</u>
+COPD is a prevalent and chronic illness primarily caused by inhaling tobacco smoke, ranking as the third leading cause of death in the United States. COPD is a heterogeneous lung condition characterized by chronic respiratory symptoms such as dyspnea, cough, expectoration, and exacerbations, which result from abnormalities in the airways (bronchitis, bronchiolitis) and/or alveoli (emphysema), leading to persistent and often progressive airflow obstruction. According to estimates, approximately 13 million Americans have received a diagnosis of COPD, and an additional 13 million individuals are unaware of their COPD diagnosis, totaling to about 26 million Americans affected by this chronic respiratory disease (ALA, 2023).
+
 ## <u>Project Description</u>
-This machine learning classification project aims to conduct an extensive analysis and predictive assessment of Chronic Obstructive Pulmonary Disease (COPD) prevalence in the United States, utilizing the comprehensive "U.S. Chronic Disease Indicators (CDI)" dataset. The dataset encompasses a wealth of COPD-related information, including risk factors, prevalence rates, health outcomes, and crucial demographic data such as age, gender, race, and geographical location.
-
-COPD is a prevalent and chronic illness primarily caused by inhaling tobacco smoke, ranking as the third leading cause of death in the United States. Despite being treatable and preventable, COPD remains underdiagnosed, and approximately 13 million individuals are unaware of their COPD diagnosis. The project aims to shed light on the characteristics of this population and investigate health disparities among vulnerable groups. Understanding COPD's prevalence across different demographics is vital for addressing health disparities and improving healthcare planning and interventions.
+This machine learning classification project aims to conduct an extensive analysis and predictive assessment of Chronic Obstructive Pulmonary Disease (COPD) prevalence in the United States, utilizing the comprehensive "U.S. Chronic Disease Indicators (CDI)" dataset. The dataset encompasses a wealth of COPD-related information, including risk factors, prevalence rates, health outcomes, and crucial demographic data such as age, gender, race, and geographical location. A ML Classification project could shed light on the characteristics of this population and investigate health disparities among vulnerable groups. Understanding COPD's prevalence across different demographics is vital for addressing health disparities and improving healthcare planning and interventions.
 
 ## <u>Project Goal</u>
 
