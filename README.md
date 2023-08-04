@@ -163,6 +163,12 @@ The similarity in symptoms between COPD and COVID-19 has resulted in delayed dia
 
 By implementing these recommendations and conducting additional research, we can gain deeper insights into COPD prevalence, improve early detection, and implement effective interventions, ultimately leading to better COPD outcomes and improved public health.
     
+    
+## <u>LinkedIn Project Description</u>
+    
+A comprehensive investigation was conducted on COPD, utilizing machine learning techniques with the DHHS Chronic Disease Indicator dataset, which contained over 1.2 million entries. To process and visualize the data effectively, I employed essential Python libraries such as Pandas, Matplotlib, Seaborn, Scipy, and Scikit-Learn. For presenting the geographical distribution, I used Tableau to create interactive map visualizations. Additionally, I incorporated Folium to produce dynamic and engaging map visuals for an interactive user experience. During the analysis, I opted for the Decision Tree model due to its consistent and marginally beat baseline accuracy significant findings, which were further supported by peer-reviewed studies on COPD. The primary goal of the project was to contribute to public health by enhancing the understanding of COPD prevalence management and identifying potential improvements.
+    
+    
 ## <u>References</u>
 
 - American Lung Association.[ALA] (2023). COPD Prevalence. Retrieved from https://www.lung.org/research/trends-in-lung-disease/copd-trends-brief/copd-prevalence
@@ -171,6 +177,3 @@ By implementing these recommendations and conducting additional research, we can
 - Mamary, A. J., Stewart, J. I., Kinney, G. L., Hokanson, J. E., Shenoy, K., Dransfield, M. T., Foreman, M. G., Vance, G. B., Criner, G. J., & COPDGene® Investigators (2018). Race and Gender Disparities are Evident in COPD Underdiagnoses Across all Severities of Measured Airflow Obstruction. Chronic obstructive pulmonary diseases (Miami, Fla.), 5(3), 177–184. https://doi.org/10.15326/jcopdf.5.3.2017.0145
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6296789/
     
-    
-## <u>LinkedIn Project Description</u>
-A comprehensive investigation was conducted on COPD, utilizing machine learning techniques with the DHHS Chronic Disease Indicator dataset, which contained over 1.2 million entries. To process and visualize the data effectively, I employed essential Python libraries such as Pandas, Matplotlib, Seaborn, Scipy, and Scikit-Learn. For presenting the geographical distribution, I used Tableau to create interactive map visualizations. Additionally, I incorporated Folium to produce dynamic and engaging map visuals for an interactive user experience. During the analysis, I opted for the Decision Tree model due to its consistent and marginally beat baseline accuracy significant findings, which were further supported by peer-reviewed studies on COPD. The primary goal of the project was to contribute to public health by enhancing the understanding of COPD prevalence management and identifying potential improvements.
