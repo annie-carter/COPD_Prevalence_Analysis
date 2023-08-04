@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-import folium
+# import folium
 import scipy.stats as stats
 from scipy.stats import pearsonr, spearmanr
 
@@ -55,7 +55,7 @@ def prep_copd():
     # Convert the latitude and longitude values to float
     df_sample['Longitude'] = df_sample['Longitude'].astype(float)
     df_sample['Latitude'] = df_sample['Latitude'].astype(float)
-    
+    # df_sample.drop('Geo Location')
     # Drop rows with specific values from the 'Topic' column
     df_sample = df_sample.drop(df_sample[df_sample['Disease'].isin(values_to_remove)].index)
     
@@ -69,12 +69,17 @@ def prep_copd():
     
     # Create a new column 'Race/Ethnicity' based on the condition
     df_sample['Race/Ethnicity'] = np.where(df_sample.StratificationCategory1 == 'Race/Ethnicity', df_sample.Demographics, '')
-
-    # Create a new column 'Race/Gender' based on the condition
-    df_sample['Gender'] = np.where(df_sample.StratificationCategory1 == 'Gender', df_sample.Demographics, '')
     
     # Will use Female to create one-hot code "dummy" value for "female" 
-    df_sample['Yes_female'] = np.where(df_sample['Gender'] == 'Female', 1, 0).astype(int)
+    df_sample['Yes_female'] = np.where(df_sample['Demographics'] == 'Female', 1, 0).astype(int)
+    df_sample['Yes_White'] = np.where(df_sample['Demographics'] == 'White, non-Hispanic', 1, 0).astype(int)
+    df_sample['Yes_Black'] = np.where(df_sample['Demographics'] == 'Black, non-Hispanic', 1, 0).astype(int)
+    df_sample['Yes_Hispanic'] = np.where(df_sample['Demographics'] == 'Hispanic', 1, 0).astype(int)
+    df_sample['Yes_Asian_PI'] = np.where(df_sample['Demographics'] == 'Asian or Pacific Islander', 1, 0).astype(int)
+    df_sample['Yes_Native_Amn'] = np.where(df_sample['Demographics'] == 'American Indian or Alaska Native', 1, 0).astype(int)
+    df_sample['Yes_Other'] = np.where(df_sample['Demographics'] == 'Other, non-Hispanic', 1, 0).astype(int)
+    df_sample['Yes_Multiracial'] = np.where(df_sample['Demographics'] == 'Multiracial, non-Hispanic', 1, 0).astype(int)
+
 
     #Remove nulls
     df_sample.dropna(inplace=True)
@@ -90,33 +95,41 @@ def prep_copd():
         pd.read_csv(filename)
     return df_sample
 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 def demographic_graph(df_sample):
-    # Get the value counts of 'COPD' topic in the 'Demographics' column
-    demo_copd = df_sample[df_sample['Yes_COPD'] == 1]['Demographics'].value_counts()
-    
+    # Get the value counts of each demographic category in the 'Demographics' column
+    demo_copd = df_sample['Demographics'].value_counts()
+
+    # Filter and select only the desired demographic categories
+    demo_copd = demo_copd[demo_copd.index.isin(['White, non-Hispanic','Black, non-Hispanic', 'Hispanic', 'Asian or Pacific Islander', 'American Indian or Alaska Native', 'Other, non-Hispanic','Multiracial, non-Hispanic', 'Male', 'Female'])].dropna()
+
     # Create a bar plot using Seaborn
     plt.figure(figsize=(12, 10))
     dc = sns.barplot(x=demo_copd.index, y=demo_copd.values, palette='Blues')
-    
+
     # Set labels and title
     plt.xlabel('Demographics')
     plt.ylabel('Count')
-    plt.title('Value Counts of "COPD" based on Demographics')
-              
+    plt.title('Counts by Demographics')
+
     # Rotate x-axis labels by 45 degrees
     plt.xticks(rotation=45)
-    
+
     # Add count numbers on bars
     for p in dc.patches:
         width = p.get_width()
         height = p.get_height()
-        x, y = p.get_xy()    
+        x, y = p.get_xy()
         offset = width * 0.02  # Adjust the offset percentage as needed
         dc.annotate(format(height, '.0f'), (x + width / 2., y + height), ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-    
+
     # Show the plot
-    plt.tight_layout()  
+    plt.tight_layout()
     plt.show()
+
 #-------------- SPLIT-------
 def split_sample(df_sample):
     ''' The below functions were created in regression excercises and will be aggregated to make a master clean_data function for final 
@@ -143,35 +156,27 @@ def X_y_split(sample_train, sample_validate, sample_test):
     #------------GENDER VS COPD--------
 
 def gender_graph(sample_train):
-    ''' This functions graphs gender vs COPD''' 
-    # Create DataFrame for graph
-    gender_graph = pd.DataFrame(sample_train)
-    
-    # Create DataFrame for graph
-    gender_graph_df = sample_train[sample_train['Gender'].isin(['Male', 'Female'])].dropna(subset=['Gender'])
-    
-    # Assuming you have a DataFrame 'sample_train' with the required data
     new_labels = {'no COPD': 'No COPD', 'COPD': 'COPD'}
-    
+    x = ['Female', 'Male']
     # Set a larger figure size
     plt.figure(figsize=(10, 6))
-    
+
     # Visualizing the Gender vs COPD
-    gg = sns.countplot(data=gender_graph_df, x='Gender', hue='Yes_COPD', palette='Blues')
-    
-    # Access the legend object
-    legend = gg.legend()
+    gg = sns.countplot(data=sample_train, x='Yes_female', hue='Yes_COPD', palette='Blues')
     
     # Modify the legend labels
-    legend.get_texts()[0].set_text(new_labels['no COPD'])
-    legend.get_texts()[1].set_text(new_labels['COPD'])
+    gg.legend(title='COPD', labels=['No COPD', 'COPD'])
+    #Modify the legend labels
+    # legend.get_texts()[0].set_text(new_labels['no COPD'])
+    # legend.get_texts()[1].set_text(new_labels['COPD'])
+    plt.xticks(range(len(x)), x)
     
     gg.set_xlabel('Gender')
     gg.set_ylabel('Number of Observations')
     plt.title('How Gender Relates to COPD?')
     
     # Rotate x-axis labels by 45 degrees
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=0)
     
     # Add count numbers on bars
     for p in gg.patches:
@@ -182,7 +187,8 @@ def gender_graph(sample_train):
         gg.annotate(format(height, '.0f'), (x + width / 2., y + height), ha='center', va='center', xytext=(0, 5), textcoords='offset points')
     
     # Use tight layout
-    plt.tight_layout()   
+    plt.tight_layout()
+    
     plt.show()
 
 def gender_observed(sample_train):
@@ -205,6 +211,42 @@ def gender_observed(sample_train):
     plt.ylabel('Count')
     plt.title('Observed COPD Status by Gender')
     plt.legend(title='Gender', loc='upper right', labels=['Female', 'Male'])
+    
+    # Rename the x-axis labels
+    go.set_xticklabels(['No COPD', 'Yes COPD'], rotation=0)
+    
+    # Rotate x-axis labels by 45 degrees
+    plt.xticks(rotation=0)
+        
+    # Add count numbers on bars
+    for p in go.patches:
+        width = p.get_width()
+        height = p.get_height()
+        x, y = p.get_xy()    
+        offset = width * 0.02  # Adjust the offset percentage as needed
+        go.annotate(format(height, '.0f'), (x + width / 2., y + height), ha='center', va='center', xytext=(0, 5), textcoords='offset points')
+        
+    # Use tight layout
+    plt.tight_layout()
+    plt.show()
+    
+def gender_graph2(sample_train):
+    # Assuming you have a DataFrame 'df_sample' with the required data
+    new_labels = {'no COPD': 'No COPD', 'COPD': 'COPD'}
+    # Plot the observed data as a bar plot
+    go =gender_observed.plot(kind='bar', stacked=True, color=['pink','skyblue' ], edgecolor='black')
+    # Access the legend object
+    legend = go.legend()
+        
+    # Modify the legend labels
+    legend.get_texts()[0].set_text(new_labels['no COPD'])
+    legend.get_texts()[1].set_text(new_labels['COPD'])
+    
+    # Set the labels and title
+    plt.xlabel('COPD Status')
+    plt.ylabel('Count')
+    plt.title('Observed COPD Status by Gender')
+    plt.legend(title='Yes_female', loc='upper right', labels=['Female', 'Male'])
     
     # Rename the x-axis labels
     go.set_xticklabels(['No COPD', 'Yes COPD'], rotation=0)
@@ -251,7 +293,7 @@ def race_graph(sample_train):
     race_graph_df = pd.DataFrame(sample_train)
     
     # Filter the DataFrame to keep only 'Male' and 'Female' values and drop rows with blank values
-    race_graph_df = race_graph_df[race_graph_df['Race/Ethnicity'].isin(['White, non-Hispanic','Black, non-Hispanic', 'Hispanic', 'Asian or Pacific Islander', 'American Indian or Alaska Native', 'Other, non-Hispanic','Multiracial, non-Hispanic'])].dropna(subset=['Race/Ethnicity'])
+    race_graph_df = race_graph_df[race_graph_df['Demographics'].isin(['White, non-Hispanic','Black, non-Hispanic', 'Hispanic', 'Asian or Pacific Islander', 'American Indian or Alaska Native', 'Other, non-Hispanic','Multiracial, non-Hispanic'])].dropna(subset=['Demographics'])
     
     #relabel
     new_labels = {'no COPD': 'No COPD', 'COPD': 'COPD'}
@@ -260,7 +302,7 @@ def race_graph(sample_train):
     plt.figure(figsize=(10, 6))
     
     # Visualizing the Race/Ethnicity vs COPD
-    eg = sns.countplot(data=race_graph_df, x='Race/Ethnicity', hue='Yes_COPD', palette='Blues')
+    eg = sns.countplot(data=race_graph_df, x='Demographics', hue='Yes_COPD', palette='Blues')
     
     # Access the legend object
     legend = eg.legend()
@@ -372,21 +414,44 @@ def year_graph(sample_train):
     plt.xticks(rotation=45)
     plt.show()
     
-def year_stat(sample_train, sample_validate):
-    '''Pearson R stat for year'''
+    #Advised to do Chi-square stat test 
+def year_stat1(sample_train, sample_validate):
+    ''' This functions chi-square stat for year''' 
     alpha = 0.05
-    train_r, train_p = pearsonr(sample_train.Year, sample_train.Yes_COPD)
-    validate_r, validate_p = pearsonr(sample_validate.Year, sample_validate.Yes_COPD)
-    #    test_r, test_p = pearsonr(test.chlorides, test.quality)
-    print('train_r:', train_r)
-    print('train_p:',train_p)
-    print('validate_r:', validate_r)
-    print('validate_p:', validate_p)
-    print(f'The p-value is less than the alpha: {validate_p < alpha}')
-    if validate_p < alpha:
-        print('Outcome: We reject the null')
+    year_observed = pd.crosstab(sample_train['Yes_COPD'], sample_train['Year'])
+    stats.chi2_contingency(year_observed)
+    chi2, p, degf, expected = stats.chi2_contingency(year_observed)
+    print('Year Observed')
+    print(year_observed.values)
+    print('\nExpected')
+    print(expected.astype(int))
+    print('\n----')
+    print(f'chi^2 = {chi2:.4f}')
+    print(f'p_value = {p:.4f}')
+    print(f'The p-value is less than the alpha: {p < alpha}')
+    if p < alpha:
+        print('We reject the null')
     else:
-        print("Outcome: We fail to reject the null")
+        print("we fail to reject the null")
+     
+    
+def year_stat(sample_train, sample_validate):
+    alpha = 0.05
+
+    # Compute Spearman correlation
+    train_spearman_corr, train_p_value = stats.spearmanr(sample_train['Yes_COPD'], sample_train['Year'])
+    val_spearman_corr, val_p_value = stats.spearmanr(sample_validate['Yes_COPD'], sample_validate['Year'])
+    # Print the results
+    print("Spearman Train Correlation Coefficient:", train_spearman_corr,)
+    print("Spearman Validate Correlation Coefficient:", val_spearman_corr)
+    print("Train P-Value:", train_p_value)
+    print("Validate P-Value:", val_p_value)
+
+    if val_p_value < 0.05:
+        print("The relationship is statistically significant.")
+    else:
+        print("The relationship is not statistically significant.")
+
 
 #------- US GEO LOCATION  VS COPD-----
 def map_graph(sample_train):
