@@ -111,7 +111,7 @@ alpha = .05
 * Ha = Year has a relationship to COPD prevalence
 * Outcome: We reject the Null Hypothesis.
 
-
+[Jump to Navigation](#navigation)
 ## <u>Planning Process</u>
 #### Planning
 1. Clearly define the problem statement related to the DHHS Chronic Disease Indicator dataset, including essential information for addressing the chronic disease of interest.
@@ -164,9 +164,10 @@ By following these instructions, you will be able to reproduce the analysis and 
 
 <a id='navigation'></a>
 [[Key Findings](#key-findings)]
-[[Take Aways](#take-aways)]
+[[Next Steps](#next-steps)]
 [[Conclusion](#conclusion)]
 [[Recommendations](#recommendations)]
+[[References](#references)]
 
 ## <u>Key Findings</u>
 
@@ -184,7 +185,7 @@ The similarity in symptoms between COPD and COVID-19 has resulted in delayed dia
 - The predictive models, including the Decision Tree Test Model, consistently performed well with close alignment to the baseline accuracy of 76.21%. The Decision Tree Test Model showed a marginal improvement at 76.28%.
 - The findings underscore gender and racial disparities in COPD diagnosis, highlighting the need for tailored interventions to improve healthcare access and timely diagnoses for underserved populations. Continuous monitoring of COPD rates is crucial for targeted interventions in COPD prevention and management. Additionally, the impact of COVID-19 on COPD patients emphasizes the importance of considering comorbidities and ensuring prompt and accurate diagnoses during pandemics. This study provides essential insights into COPD prevalence, guiding effective public health strategies to mitigate COPD's impact in the United States.
 
-  
+[Jump to Navigation](#navigation)  
 ## <u>Next Steps</u>
 
 1. **Time-Series Analysis:** Consider conducting a time-series analysis to gain valuable insights into the trends and patterns of COPD prevalence over the years. Pay particular attention to the significant decline observed between 2018 and 2019. Exploring this time range in more detail may reveal underlying factors or interventions that contributed to the change in COPD rates.
@@ -213,7 +214,7 @@ By implementing these recommendations and conducting additional research, we can
     
 A comprehensive investigation was conducted on COPD, utilizing machine learning techniques with the DHHS Chronic Disease Indicator dataset, which contained over 1.2 million entries. To process and visualize the data effectively, I employed essential Python libraries such as Pandas, Matplotlib, Seaborn, Scipy, and Scikit-Learn. For presenting the geographical distribution, I used Tableau to create interactive map visualizations. Additionally, I incorporated Folium to produce dynamic and engaging map visuals for an interactive user experience. During the analysis, I opted for the Decision Tree model due to its consistent and marginally beat baseline accuracy significant findings, which were further supported by peer-reviewed studies on COPD. The primary goal of the project was to contribute to public health by enhancing the understanding of COPD prevalence management and identifying potential improvements.
     
-    
+[Jump to Navigation](#navigation)   
 ## <u>References</u>
 
 - American Lung Association.[ALA] (2023). COPD Prevalence. Retrieved from https://www.lung.org/research/trends-in-lung-disease/copd-trends-brief/copd-prevalence
