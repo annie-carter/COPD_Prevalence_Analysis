@@ -9,10 +9,10 @@ ___
 
 <a id='navigation'></a>
 [[Project Description](#project-description)]
-[[Tested Hypotheses](#tested-hypotheses)]
+[[Statistical Testing Hypothesis](#statistical-tested-hypotheses)]
 [[Data Dictionary](#data-dictionary)]
 [[Planning_Process](#planning-process)]
-[[Repo Replication](#repo-replication)]
+[[Project Reproduction](#project-reproduction)]
 
 ___
 
@@ -33,6 +33,21 @@ This machine learning classification project aims to conduct an extensive analys
 
 The main objective of this project is to build a predictive model using advanced ML classification techniques that leverage demographic and chronic disease indicators to address fluctuations in COPD rates, with specific attention to gender and race demographics. By conducting this analysis, we seek to identify complex patterns and crucial risk factors related to COPD prevalence. The valuable insights obtained from this investigation will inform targeted interventions, early detection approaches, and enhanced healthcare planning.
 
+**Tools & Technologies Used:** 
+
+![](https://img.shields.io/static/v1?message=Python&logo=python&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=Pandas&logo=pandas&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=SciKit-Learn&logo=scikit-learn&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=SciPy&logo=scipy&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=NumPy&logo=numpy&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=MatPlotLib&logo=python&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=Seaborn&logo=python&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=Tableau&logo=tableau&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=Canva&logo=canva&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=Markdown&logo=markdown&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=GitHub&logo=github&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=JupyterLab&logo=jupyter&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
+![](https://img.shields.io/static/v1?message=Trello&logo=trello&labelColor=5c5c5c&color=2f5f98&logoColor=white&label=%20)
 
 ## <u>Initial Questions</u>
 1. Is there a relationship between the category of "male or female" and COPD prevalence?
@@ -134,7 +149,7 @@ alpha = .05
 15. Maintain meticulous project documentation, adhering to scientific and professional standards, to ensure successful presentation or seamless deployment.
 
 [Jump to Navigation](#navigation)
-## <u>Instructions to Reproduce the Final Project Notebook</u> 
+## <u>Project Reproduction</u> 
 To successfully run/reproduce the final project notebook, please follow these steps:
 
 1.  Read this README.md document to familiarize yourself with the project details and key findings.
