@@ -13,6 +13,11 @@ ___
 [[Data Dictionary](#data-dictionary)]
 [[Planning_Process](#planning-process)]
 [[Project Reproduction](#project-reproduction)]
+[[Key Findings](#key-findings)]
+[[Next Steps](#next-steps)]
+[[Conclusion](#conclusion)]
+[[Recommendations](#recommendations)]
+[[References](#references)]
 
 ___
 
@@ -54,7 +59,7 @@ The main objective of this project is to build a predictive model using advanced
 2. Is there a relationship between race and COPD prevalence?
 3. Is there a relationship between the year and COPD prevalence?
 4. Is there a relationship between the state and COPD prevalence?
-
+[Jump to Navigation](#navigation)
 
 
 ## Data Dictionary
@@ -134,7 +139,7 @@ alpha = .05
 8. Carefully choose a suitable machine learning algorithm, evaluating options like Logistic Regression, Decision Trees, Random Forests, or K Nearest Neighbor tailored for the regression task.
 
 9. Implement the selected machine learning models using robust libraries (e.g., scikit-learn), systematically evaluating multiple models, including Decision Trees, Logistic Regression, and Random Forests, with a fixed Random Seed value 42 for reproducibility.
-
+> <code>Pip install folium </code>
 10. Train the models rigorously to ensure optimal learning and model performance.
 
 11. Conduct rigorous model validation techniques to assess model generalization capability and reliability.
@@ -161,7 +166,6 @@ To successfully run/reproduce the final project notebook, please follow these st
 By following these instructions, you will be able to reproduce the analysis and review the project's final report. Feel free to explore the code, visualizations, and conclusions presented in the notebook.
 
 [Jump to Navigation](#navigation)
-
 <a id='navigation'></a>
 [[Key Findings](#key-findings)]
 [[Next Steps](#next-steps)]
@@ -180,6 +184,8 @@ By following these instructions, you will be able to reproduce the analysis and 
 * <span style ='color:#1F456E'> Yearly Rates in COPD: Evidence showed substantial shift in COPD prevalence From 2014 to 2018, dispite COPD rates remaining stable, with little change on average year to year. However, a significant decline in both rates and counts occurred from 2018 to 2019, possibly due to a change in the question format and later the COVID-19 global pandemic. The subsequent decrease in COPD rates and counts from 2019 to 2020 may not be statistically relevant.(ALA, 2023; Awatade, 2023)
 The similarity in symptoms between COPD and COVID-19 has resulted in delayed diagnosis for some COPD patients infected with COVID-19. Misdiagnosis as a COPD exacerbation has been reported, further complicating the reporting of COPD and may be reason for reported decline. (Awatade, 2023).
 <a name="conclusion"></a>
+[Jump to Navigation](#navigation)    
+
 ## <u>Conclusion</u>
 - The analysis of the DHHS Chronic Disease Indicators dataset revealed significant relationships between gender, race/ethnicity, US locations, and COPD prevalence.
 - The predictive models, including the Decision Tree Test Model, consistently performed well with close alignment to the baseline accuracy of 76.21%. The Decision Tree Test Model showed a marginal improvement at 76.28%.
@@ -195,11 +201,9 @@ The similarity in symptoms between COPD and COVID-19 has resulted in delayed dia
 3. **Geo-Location Clustering:** Investigate the spatial distribution of COPD prevalence by selecting specific geographic areas. Conduct clustering analysis to identify regions with similar COPD patterns based on geo-location data. This exploration can shed light on whether certain locations are more susceptible to higher or lower COPD rates and guide targeted intervention strategies.
 
 4. **Feature Engineering for Specific COPD Types and Age:** Enhance predictions and insights by implementing targeted feature engineering for specific COPD types and age groups in the DHHS Chronic Disease Indicators analysis. Capture unique characteristics and risk factors associated with different COPD types and specific age ranges to improve accuracy in prevalence predictions.
-
-## <u>Recommendations</u>
-<a name="recommendations"></a>
 [Jump to Navigation](#navigation)
-    
+## <u>Recommendations</u>
+<a name="recommendations"></a>   
 - **Targeted Awareness Campaigns:** 
 -- Implement targeted interventions to address gender disparities in COPD diagnosis, encouraging early reporting of symptoms and enhancing healthcare access for both men and women.
 --Develop and implement tailored healthcare initiatives to address racial disparities in COPD diagnosis, focusing on improving access and healthcare outcomes for racial minority groups.
@@ -209,7 +213,7 @@ The similarity in symptoms between COPD and COVID-19 has resulted in delayed dia
 
 By implementing these recommendations and conducting additional research, we can gain deeper insights into COPD prevalence, improve early detection, and implement effective interventions, ultimately leading to better COPD outcomes and improved public health.
     
-    
+[Jump to Navigation](#navigation)    
 ## <u>LinkedIn Project Description</u>
     
 A comprehensive investigation was conducted on COPD, utilizing machine learning techniques with the DHHS Chronic Disease Indicator dataset, which contained over 1.2 million entries. To process and visualize the data effectively, I employed essential Python libraries such as Pandas, Matplotlib, Seaborn, Scipy, and Scikit-Learn. For presenting the geographical distribution, I used Tableau to create interactive map visualizations. Additionally, I incorporated Folium to produce dynamic and engaging map visuals for an interactive user experience. During the analysis, I opted for the Decision Tree model due to its consistent and marginally beat baseline accuracy significant findings, which were further supported by peer-reviewed studies on COPD. The primary goal of the project was to contribute to public health by enhancing the understanding of COPD prevalence management and identifying potential improvements.
