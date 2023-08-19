@@ -4,13 +4,33 @@ by Annie Carter
 Sourced by U.S. Department of Health & Human Services
 ![image](https://img.freepik.com/premium-photo/lungs-airway-3d-style-darktable-processing_921860-35264.jpg?size=626&ext=jpg&ga=GA1.2.382400335.1688677589&semt=sph)
 
+
+___
+
+<a id='navigation'></a>
+
+[[Project Description](#project-description)]
+[[Project Planning](#project-planning)]
+[[Key Findings](#key-findings)]
+[[Tested Hypotheses](#tested-hypotheses)]
+[[Take Aways](#take-aways)]
+[[Data Dictionary](#data-dictionary)]
+[[Repo Replication](#repo-replication)]
+
+___
+
+
 Trello: https://trello.com/invite/b/8SJiWQzt/ATTIc70085783caf23713771e813130743131BC98E7B/individual-project
 
 ## <u>Background</u>
 COPD is a prevalent and chronic illness primarily caused by inhaling tobacco smoke, ranking as the third leading cause of death in the United States. COPD is a heterogeneous lung condition characterized by chronic respiratory symptoms such as dyspnea, cough, expectoration, and exacerbations, which result from abnormalities in the airways (bronchitis, bronchiolitis) and/or alveoli (emphysema), leading to persistent and often progressive airflow obstruction. According to estimates, approximately 13 million Americans have received a diagnosis of COPD, and an additional 13 million individuals are unaware of their COPD diagnosis, totaling to about 26 million Americans affected by this chronic respiratory disease (ALA, 2023).
 
+[Jump to Navigation](#navigation)
+<a name="project-description"></a>
 ## <u>Project Description</u>
 This machine learning classification project aims to conduct an extensive analysis and predictive assessment of Chronic Obstructive Pulmonary Disease (COPD) prevalence in the United States, utilizing the comprehensive "U.S. Chronic Disease Indicators (CDI)" dataset. The dataset encompasses a wealth of COPD-related information, including risk factors, prevalence rates, health outcomes, and crucial demographic data such as, gender, race, and geographical location. A ML Classification project could shed light on the characteristics of this population and investigate health disparities among vulnerable groups. Understanding COPD's prevalence across different demographics is vital for addressing health disparities, ultimately playing a significant role in reducing the impact of COPD on public health in the United States.
+
+
 
 ## <u>Project Goal</u>
 
@@ -22,6 +42,8 @@ The main objective of this project is to build a predictive model using advanced
 2. Is there a relationship between race and COPD prevalence?
 3. Is there a relationship between the year and COPD prevalence?
 4. Is there a relationship between the state and COPD prevalence?
+
+[Jump to Navigation](#navigation)
 
 ## Data Dictionary
 
@@ -54,7 +76,7 @@ The initial dataset comprised 34 columns, which reduced to 9 columns after prepa
 |Yes_Amn Indian Alaska Native |Yes_Native_Amn | 537407 non-null  int64  | Yes_Native = 1, No =0         |
 |Yes_Multiracial, non-Hispanic|Yes_Multiracial| 537407 non-null  int64  | Yes_Multiracial = 1, No =0    |
 
-
+[Jump to Navigation](#navigation)
 ## <u>Statistical Testing Hypothesis </u>
 Hypothesis 1 - 
 
@@ -124,7 +146,7 @@ To successfully run/reproduce the final project notebook, please follow these st
 6. Run the final_report.ipynb notebook to execute the project code and generate the results.
 By following these instructions, you will be able to reproduce the analysis and review the project's final report. Feel free to explore the code, visualizations, and conclusions presented in the notebook.
 
-
+[Jump to Navigation](#navigation)
 ## <u>Key Findings</u>
 
 * <span style ='color:#1F456E'> Gender Disparity in COPD Diagnosis: Women had higher observations of COPD than men. This could be because women smokers are about 50% more likely to develop COPD than men. Generally, women smoke less than men, suggesting that they may be more susceptible to developing COPD. In another large population study, females appear to have more severe COPD with early-onset disease and a greater susceptibility to COPD with lower tobacco exposure. (Barnes,2016)
@@ -136,12 +158,13 @@ By following these instructions, you will be able to reproduce the analysis and 
 * <span style ='color:#1F456E'> Yearly Rates in COPD: Evidence showed substantial shift in COPD prevalence From 2014 to 2018, dispite COPD rates remaining stable, with little change on average year to year. However, a significant decline in both rates and counts occurred from 2018 to 2019, possibly due to a change in the question format and later the COVID-19 global pandemic. The subsequent decrease in COPD rates and counts from 2019 to 2020 may not be statistically relevant.(ALA, 2023; Awatade, 2023)
 The similarity in symptoms between COPD and COVID-19 has resulted in delayed diagnosis for some COPD patients infected with COVID-19. Misdiagnosis as a COPD exacerbation has been reported, further complicating the reporting of COPD and may be reason for reported decline. (Awatade, 2023).
     
-    
+ [Jump to Navigation](#navigation)   
 ## <u>Conclusion</u>
 - The analysis of the DHHS Chronic Disease Indicators dataset revealed significant relationships between gender, race/ethnicity, US locations, and COPD prevalence.
 - The predictive models, including the Decision Tree Test Model, consistently performed well with close alignment to the baseline accuracy of 76.21%. The Decision Tree Test Model showed a marginal improvement at 76.28%.
 - The findings underscore gender and racial disparities in COPD diagnosis, highlighting the need for tailored interventions to improve healthcare access and timely diagnoses for underserved populations. Continuous monitoring of COPD rates is crucial for targeted interventions in COPD prevention and management. Additionally, the impact of COVID-19 on COPD patients emphasizes the importance of considering comorbidities and ensuring prompt and accurate diagnoses during pandemics. This study provides essential insights into COPD prevalence, guiding effective public health strategies to mitigate COPD's impact in the United States.
 
+[Jump to Navigation](#navigation)    
 ## <u>Next Steps</u>
 
 1. **Time-Series Analysis:** Consider conducting a time-series analysis to gain valuable insights into the trends and patterns of COPD prevalence over the years. Pay particular attention to the significant decline observed between 2018 and 2019. Exploring this time range in more detail may reveal underlying factors or interventions that contributed to the change in COPD rates.
