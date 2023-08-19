@@ -59,6 +59,7 @@ The main objective of this project is to build a predictive model using advanced
 2. Is there a relationship between race and COPD prevalence?
 3. Is there a relationship between the year and COPD prevalence?
 4. Is there a relationship between the state and COPD prevalence?
+
 [Jump to Navigation](#navigation)
 
 
@@ -139,7 +140,7 @@ alpha = .05
 8. Carefully choose a suitable machine learning algorithm, evaluating options like Logistic Regression, Decision Trees, Random Forests, or K Nearest Neighbor tailored for the regression task.
 
 9. Implement the selected machine learning models using robust libraries (e.g., scikit-learn), systematically evaluating multiple models, including Decision Trees, Logistic Regression, and Random Forests, with a fixed Random Seed value 42 for reproducibility.
-> <code>Pip install folium </code>
+
 10. Train the models rigorously to ensure optimal learning and model performance.
 
 11. Conduct rigorous model validation techniques to assess model generalization capability and reliability.
@@ -162,6 +163,7 @@ To successfully run/reproduce the final project notebook, please follow these st
 3. Clone the classification_project repository from my GitHub or download the following files: aquire.py, wrange.py or prepare.py, and final_report.ipynb. You can find these files in the project repository.
 4. Open the final_report.ipynb notebook in your preferred Jupyter Notebook environment or any compatible Python environment.
 5. Ensure that all necessary libraries or dependent programs are installed. You may need to install additional packages if they are not already present in your environment.
+> <code>Pip install folium </code>
 6. Run the final_report.ipynb notebook to execute the project code and generate the results.
 By following these instructions, you will be able to reproduce the analysis and review the project's final report. Feel free to explore the code, visualizations, and conclusions presented in the notebook.
 
