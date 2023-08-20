@@ -1,6 +1,6 @@
 # DHHS Chronic Disease Indicators - Chronic Obstructive Pulmonary Disease (COPD) Prevalence Analysis
 # <bu>CLASSIFICATION PROJECT</bu>
-by Annie Carter
+by Annie Carter, MSN, BS, RN
 Sourced by U.S. Department of Health & Human Services
 ![image](https://img.freepik.com/premium-photo/lungs-airway-3d-style-darktable-processing_921860-35264.jpg?size=626&ext=jpg&ga=GA1.2.382400335.1688677589&semt=sph)
 
